@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen'),),
       body: BlocBuilder<CounterBloc, CounterState>( // BloC 의 변화에 따라 위젯을 빌드
+        bloc: CounterBloc(), // BloC for single widget -> 전역상태에 이벤트 발생시켜도 현재 페이지의 state 영향x
         buildWhen: (previous, current) => previous.count != current.count, // default: 상태 변화
         builder: ((context, state) {
           return Center(
