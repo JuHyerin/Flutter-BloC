@@ -34,8 +34,8 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   void onTransition(Transition<CounterEvent, CounterState> transition) {
     super.onTransition(transition);
     print(transition);
-    print(transition.currentState.count);
-    print(transition.nextState.count);
+    print('currentState: ${transition.currentState.count}');
+    print('nextState: ${transition.nextState.count}');
   }
 
 }

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_manager/blocs/counter/counter_bloc.dart';
+import 'package:flutter_state_manager/screens/counter_screen.dart';
+import 'package:flutter_state_manager/screens/home_screen.dart';
 
 Future<void> main() async {
-  final bloc = CounterBloc();
-  print('before: ${bloc.state.count}');
-  bloc.add(const CounterIncrement());
-  await Future.delayed(Duration.zero);
-  print('after: ${bloc.state.count}');
-  await bloc.close();
-  // bloc.add(const CounterIncrement());
   runApp(const MyApp());
 }
 
@@ -18,19 +14,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return BlocProvider( // BloC 을 사용할 위젯을 감쌈
+      create: (context) => CounterBloc(), // 전역 Bloc 생성
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routes: {
+          '/': (context) => HomeScreen(),
+          '/counter': (context) => CounterScreen(),
+        },
+        initialRoute: '/',
       ),
     );
   }
