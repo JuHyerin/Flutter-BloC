@@ -46,7 +46,7 @@ class CounterScreen extends StatelessWidget {
                     child: const Text('[-] Decrement')
                 ),
                 TextButton(
-                    onPressed: () => Navigator.of(context).pushNamed('/'),
+                    onPressed: () => Navigator.of(context).pushNamed('/bloc/home'),
                     child: const Text('Go to HomeScreen')
                 )
               ],

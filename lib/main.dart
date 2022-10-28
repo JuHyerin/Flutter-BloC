@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_state_manager/blocs/counter/counter_bloc.dart';
-import 'package:flutter_state_manager/screens/counter_screen.dart';
-import 'package:flutter_state_manager/screens/home_screen.dart';
+import 'package:flutter_state_manager/screens/bloc_practice_screen/counter_screen.dart';
+import 'package:flutter_state_manager/screens/bloc_practice_screen/home_screen.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => HomeScreen(),
-          '/counter': (context) => CounterScreen(),
+          '/bloc/home': (context) => HomeScreen(),
+          '/bloc/counter': (context) => CounterScreen(),
         },
         initialRoute: '/',
       ),

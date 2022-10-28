@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Text('count: ${state.toString()}'),
                 TextButton(
-                    onPressed: () => Navigator.of(context).pushNamed('/counter'),
+                    onPressed: () => Navigator.of(context).pushNamed('/bloc/counter'),
                     child: const Text('Go to CounterScreen')
                 )
               ],
