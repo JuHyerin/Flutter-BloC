@@ -5,28 +5,25 @@ import 'package:flutter_state_manager/screens/counter_screen.dart';
 import 'package:flutter_state_manager/screens/home_screen.dart';
 
 Future<void> main() async {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  final bloc = CounterBloc();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider( // BloC 을 사용할 위젯을 감쌈
-      create: (context) => CounterBloc(), // 전역 Bloc 생성
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        routes: {
-          '/': (context) => HomeScreen(),
-          '/counter': (context) => CounterScreen(),
-        },
-        initialRoute: '/',
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      routes: {
+        '/': (context) => BlocProvider.value(value: bloc, child: HomeScreen()),
+        '/counter': (context) => BlocProvider.value(value: bloc, child: CounterScreen()),
+      },
+      initialRoute: '/',
     );
   }
 }
