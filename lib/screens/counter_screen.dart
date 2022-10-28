@@ -5,9 +5,25 @@ import 'package:flutter_state_manager/blocs/counter/counter_bloc.dart';
 class CounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen'),),
-      body: BlocBuilder<CounterBloc, CounterState>( // BloC 의 변화에 따라 위젯을 빌드
+      body: BlocConsumer<CounterBloc, CounterState>( // BloC 의 변화에 따라 위젯을 빌드
+        listener: (context, state) {
+          if(state.count < 0) {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return const SimpleDialog(
+                    title: Center(child: Text('Bloc Listener Test'),),
+                    children: [
+                      Center(child: Text('count 마이너스!'),)
+                    ],
+                  );
+                },
+            );
+          }
+        },
         buildWhen: (previous, current) => previous.count != current.count, // default: 상태 변화
         builder: ((context, state) {
           return Center(
