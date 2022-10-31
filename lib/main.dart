@@ -5,9 +5,11 @@ import 'package:flutter_state_manager/models/cart.dart';
 import 'package:flutter_state_manager/repositories/item_list.dart';
 import 'package:flutter_state_manager/screens/bloc_practice_screen/counter_screen.dart';
 import 'package:flutter_state_manager/screens/bloc_practice_screen/home_screen.dart';
+import 'package:flutter_state_manager/screens/getx_practice_screen/getx_home_screen.dart';
 import 'package:flutter_state_manager/screens/provider_practice_screen/cart_screen.dart';
 import 'package:flutter_state_manager/screens/provider_practice_screen/item_screen.dart';
 import 'package:provider/provider.dart';
+
 
 Future<void> main() async {
   runApp(const GetXApp());
@@ -23,6 +25,7 @@ class GetXApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: GetxHomeScreen(),
     );
   }
 }
