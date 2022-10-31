@@ -10,7 +10,21 @@ import 'package:flutter_state_manager/screens/provider_practice_screen/item_scre
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  runApp(const ProviderApp());
+  runApp(const GetXApp());
+}
+
+class GetXApp extends StatelessWidget {
+  const GetXApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+    );
+  }
 }
 
 class ProviderApp extends StatelessWidget {
